@@ -1,3 +1,4 @@
+from random import choice
 from PyQt5.QtWidgets import QLabel, QMainWindow, QWidget, QVBoxLayout, QPushButton, QMessageBox
 from PyQt5.QtGui import QPixmap
 from login import log_in_9gag
@@ -8,7 +9,8 @@ class Menu(QMainWindow):
     def __init__(self, meme_list: list, image_file, webdriver, credentials):
         super().__init__()
         self.previous_meme = None
-        self.next_meme = self.meme_generator(meme_list)
+        self.meme_list = meme_list
+        self.next_meme = self.meme_generator(self.meme_list)
         self.image_file = image_file
         self.webdriver = webdriver
         self.credentials = credentials
@@ -22,11 +24,16 @@ class Menu(QMainWindow):
         label.setPixmap(pixmap)
 
         lay.addWidget(label)
-        button = QPushButton('NEXT')
-        lay.addWidget(button)
+        next_button = QPushButton('NEXT')
+        rand_button = QPushButton('RANDOM MEME')
+        lay.addWidget(next_button)
+        lay.addWidget(rand_button)
 
-        button.clicked.connect(self.on_button_clicked)
-        button.show()
+        next_button.clicked.connect(self.on_next_button_clicked)
+        rand_button.clicked.connect(self.on_random_button_clicked)
+
+        next_button.show()
+        rand_button.show()
         self.show()
 
     @staticmethod
@@ -34,7 +41,7 @@ class Menu(QMainWindow):
         for meme in meme_list:
             yield meme
 
-    def on_button_clicked(self):
+    def on_next_button_clicked(self):
         try:
             next_meme_url = next(self.next_meme)
             if not self.previous_meme:
@@ -52,3 +59,8 @@ class Menu(QMainWindow):
             alert = QMessageBox()
             alert.setText('No more meymeys :(')
             alert.exec_()
+
+    def on_random_button_clicked(self):
+        random_meme_url = choice(self.meme_list)
+        self.webdriver.get(random_meme_url)
+        self.webdriver.maximize_window()

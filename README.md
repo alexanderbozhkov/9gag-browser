@@ -1,7 +1,8 @@
 I WAS BORED, so ...
 
 I decided that I am tired of always copying and pasting the links for my favorite memes
-so I've created a gui that will automatically login in 9gag for me and open my favorite memes 1 by 1.
+so I've created a gui that will automatically login in 9gag for me and scroll through my faborite memes one by one
+or just pick a random one.
 
 Stack:
 - Ubuntu 18.04
@@ -18,4 +19,4 @@ Run project:
 Freeze (create executable)
 - on src/ level
 - fbs freeze
-This will create target/ dir with the project in executable format;
+This will create target/ directory with the project in executable format;
