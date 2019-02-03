@@ -20,3 +20,5 @@ Freeze (create executable)
 - on src/ level
 - fbs freeze
 This will create target/ directory with the project in executable format;
+
+![9gag_demo](https://user-images.githubusercontent.com/38618756/52183767-059ad180-2814-11e9-9760-5b7ff9d51ba2.gif)
