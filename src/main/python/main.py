@@ -7,7 +7,7 @@ from archive import get_all_memes
 
 ALL_MEMES = []
 ALL_MEMES_FILE = '/home/whatever/Desktop/dankest_memes.txt'  # MEME FILE
-IMAGE_FILE = './src/main/python/logo.png'  # GUI LOGO
+IMAGE_FILE = 'src/main/icons/logo.png'  # GUI LOGO
 CHROMEDRIVER = '/usr/bin/chromedriver'  # driver for selenium (chrome)
 DRIVER = webdriver.Chrome(CHROMEDRIVER)
 CREDENTIALS = []  # list with 9gag credentials [0] -> email && [1] -> password
